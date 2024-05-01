@@ -1,4 +1,5 @@
 ﻿using PilhaDinamica;
+using System.Security.Cryptography.X509Certificates;
 
 internal class Program
 {
@@ -7,16 +8,35 @@ internal class Program
         PilhaLivro minhaPilha = new PilhaLivro();
         int opc;
 
+        static void BuscarLivro(PilhaLivro pilha)
+        {
+            Console.Write("\nInforme o título do livro que deseja buscar: ");
+            string tituloBusca = Console.ReadLine();
+            Livro livroEncontrado = pilha.ProcurarPorTitulo(tituloBusca);
+            if (livroEncontrado != null)
+            {
+                Console.WriteLine($"\nO livro '{tituloBusca}' foi encontrado na pilha.");
+            }
+            else
+            {
+                Console.WriteLine($"\nO livro '{tituloBusca}' não foi encontrado na pilha.");
+            }
+        }
+
         do
         {
+            Console.Clear();
             Console.WriteLine("\n\n---- MENU ----\n");
             Console.WriteLine("|1| - Inserir Livro");
             Console.WriteLine("|2| - Remover Livro");
             Console.WriteLine("|3| - Imprimir Livro");
-            Console.WriteLine("|4| - Sair");
+            Console.WriteLine("|4| - Procurar Livro");
+            Console.WriteLine("|5| - Quantidade de Livros");
+            Console.WriteLine("|6| - Sair");
             Console.Write("\nInforme a opção desejada: ");
-
+            
             opc = int.Parse(Console.ReadLine());
+            Console.Clear();
             switch (opc)
             {
                 case 1:
@@ -32,9 +52,21 @@ internal class Program
                     break;
 
                 case 4:
-                    Console.WriteLine("\nFIM DO PROGRAMA");
+                    BuscarLivro(minhaPilha);
+                    Console.ReadLine();
                     break;
 
+                case 5:
+
+
+                    Console.WriteLine($"\nQuantidade de livros cadastrados: {minhaPilha.QuantidadeLivros()} livros");
+                    Console.ReadLine(); 
+                    break;
+
+
+                case 6:
+                    Console.WriteLine("\nFIM DO PROGRAMA");
+                    break;
                 default:
                     Console.WriteLine("\nOpção inválida!");
                     break;
@@ -54,11 +86,5 @@ internal class Program
     }
 
 
+
 }
-//Livro livro1 = new Livro("Poeira em Alto Mar"); // 1 - CRIANDO LIVRO - livro1
-//Livro livro2 = new Livro("A Volta Dos Que Não Foram");
-//minhaPilha.push(livro1); // 2 - ENVIANDO O LIVRO1 PARA | 3 - FUNÇÃO "PUSH" (CLASSE PilhaLivro)
-////minhaPilha.push(livro2);
-//minhaPilha.print();
-//minhaPilha.pop(); //REMOVE O TOPO DA PILHA, NÃO É POSSIVEL ESCOLHER.
-//minhaPilha.print();

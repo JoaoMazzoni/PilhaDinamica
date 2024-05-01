@@ -26,6 +26,11 @@ namespace PilhaDinamica
         { 
             return anterior;
         }
+
+        public string getLivro()
+        {
+            return this.titulo;
+        }
     
     }
 
