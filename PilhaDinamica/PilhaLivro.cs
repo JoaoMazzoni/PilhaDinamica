@@ -69,8 +69,6 @@ namespace PilhaDinamica
 
         }
 
-
-
         public void pop()
         {
             if (vazia())
@@ -87,11 +85,11 @@ namespace PilhaDinamica
 
         }
 
-        public Livro ProcurarPorTitulo(string titulo)
+        public Livro ProcurarPorTitulo(string titulo) //Recebe o titulo passado por "minhaPilha.ProcurarPorTitulo(tituloBusca)"
         {
-            Livro livroAtual = topoLivro;
+            Livro livroAtual = topoLivro; //Variavel local que guarda livros | Pega o livro do topo primeiro.
 
-            while (livroAtual != null)
+            while (livroAtual != null) //Repete enquanto a variavel está com algum livro, ou seja, não está vazia/null.
             {
                 if (livroAtual.getLivro() == titulo)
                 {

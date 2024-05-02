@@ -1,5 +1,5 @@
 ﻿using PilhaDinamica;
-using System.Security.Cryptography.X509Certificates;
+
 
 internal class Program
 {
@@ -8,16 +8,18 @@ internal class Program
         PilhaLivro minhaPilha = new PilhaLivro();
         int opc;
 
-        static void BuscarLivro(PilhaLivro pilha)
+        static void BuscarLivro(PilhaLivro pilha) //Recebe um parâmetro do tipo pilha, ou seja, vai acessar uma pilha de alguma coisa para buscar (Pilha de Livro - minhaPilha)
         {
-            Console.Write("\nInforme o título do livro que deseja buscar: ");
-            string tituloBusca = Console.ReadLine();
-            Livro livroEncontrado = pilha.ProcurarPorTitulo(tituloBusca);
-            if (livroEncontrado != null)
+            Console.Write("\nInforme o título do livro que deseja buscar: "); //Pede para digitar o titulo do livro
+            string tituloBusca = Console.ReadLine(); //A string local "tituloBusca" guarda o titulo digitado
+            Livro livroEncontrado = pilha.ProcurarPorTitulo(tituloBusca); //A minhaPilha acessa a função levando o titulo digitado para  ela |FUNÇÃO CLASSE - PilhaLivro|
+            //Variavel local do tipo Livro recebe o valor retornado pela função acessada (minhaPilha.ProcurarPorTitulo(titulo digitado)), que também é do tipo livro.
+
+            if (livroEncontrado != null) //Se livroEncontrado receber um valor diferente de nulo
             {
                 Console.WriteLine($"\nO livro '{tituloBusca}' foi encontrado na pilha.");
             }
-            else
+            else //Se ele não receber nada/nulo
             {
                 Console.WriteLine($"\nO livro '{tituloBusca}' não foi encontrado na pilha.");
             }
@@ -26,7 +28,7 @@ internal class Program
         do
         {
             Console.Clear();
-            Console.WriteLine("\n\n---- MENU ----\n");
+            Console.WriteLine("\n---- MENU ----\n");
             Console.WriteLine("|1| - Inserir Livro");
             Console.WriteLine("|2| - Remover Livro");
             Console.WriteLine("|3| - Imprimir Livro");
@@ -57,8 +59,6 @@ internal class Program
                     break;
 
                 case 5:
-
-
                     Console.WriteLine($"\nQuantidade de livros cadastrados: {minhaPilha.QuantidadeLivros()} livros");
                     Console.ReadLine(); 
                     break;

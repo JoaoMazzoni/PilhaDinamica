@@ -27,7 +27,7 @@ namespace PilhaDinamica
             return anterior;
         }
 
-        public string getLivro()
+        public string getLivro() //Função para pegar o título do livro.
         {
             return this.titulo;
         }
